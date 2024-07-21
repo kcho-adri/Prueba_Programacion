@@ -11,9 +11,9 @@ class PersonaController extends Controller
     public function Altas(Request $request)
     {
         $persona = new Persona();
-        $persona -> nombre = $request -> persona('nombre');
-        $persona -> apellido = $request -> persona('apellido');
-        $persona -> telefono = $request -> persona('telefono');
+        $persona -> nombre = $request -> post('nombre');
+        $persona -> apellido = $request -> post('apellido');
+        $persona -> telefono = $request -> post('telefono');
         $persona -> save();
 
         return $persona;
@@ -29,9 +29,9 @@ class PersonaController extends Controller
     public function Modificacion(Request $request, $id)
     {
         $persona = Persona::findOrFail($id);
-        $persona -> nombre = $request -> persona('nombre');
-        $persona -> apellido = $request -> persona('apellido');
-        $persona -> telefono = $request -> persona('telefono');
+        $persona -> nombre = $request -> post('nombre');
+        $persona -> apellido = $request -> post('apellido');
+        $persona -> telefono = $request -> post('telefono');
         $persona -> save();
         return $persona;
     }
