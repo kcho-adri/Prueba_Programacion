@@ -26,9 +26,14 @@ class PersonaController extends Controller
         return [ 'mensaje' => 'Persona dada de baja.' ];
     }
 
-    public function show(Persona $persona)
+    public function Modificacion(Request $request, $id)
     {
-        //
+        $persona = Persona::findOrFail($id);
+        $persona -> nombre = $request -> persona('nombre');
+        $persona -> apellido = $request -> persona('apellido');
+        $persona -> telefono = $request -> persona('telefono');
+        $persona -> save();
+        return $persona;
     }
 
     public function edit(Persona $persona)
