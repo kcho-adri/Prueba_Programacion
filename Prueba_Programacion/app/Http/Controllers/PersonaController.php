@@ -41,13 +41,8 @@ class PersonaController extends Controller
         return Persona::all();
     }
 
-    public function update(Request $request, Persona $persona)
+    public function Busqueda(Request $request, $id)
     {
-        //
-    }
-
-    public function destroy(Persona $persona)
-    {
-        //
+        return Persona::findOrFail($id);
     }
 }
