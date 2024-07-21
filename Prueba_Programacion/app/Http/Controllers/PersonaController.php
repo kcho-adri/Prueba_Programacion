@@ -19,9 +19,11 @@ class PersonaController extends Controller
         return $persona;
     }
 
-    public function store(Request $request)
+    public function Bajas($id)
     {
-        //
+        $persona = Persona::findOrFail($id);
+        $persona -> delete();
+        return [ 'mensaje' => 'Persona dada de baja.' ];
     }
 
     public function show(Persona $persona)
