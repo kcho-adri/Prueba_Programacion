@@ -36,9 +36,9 @@ class PersonaController extends Controller
         return $persona;
     }
 
-    public function edit(Persona $persona)
+    public function Listar(Request $request)
     {
-        //
+        return Persona::all();
     }
 
     public function update(Request $request, Persona $persona)
