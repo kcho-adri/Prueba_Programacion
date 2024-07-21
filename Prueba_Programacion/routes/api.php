@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/persona', [PersonaController::class, 'Altas']);
+Route::delete('/persona/{d}', [PersonaController::class, 'Bajas']);
+Route::put('/persona/{d}', [PersonaController::class, 'Modificacion']);
+Route::get('/persona', [PersonaController::class, 'Listar']);
+Route::get('/persona/{d}', [PersonaController::class, 'Busqueda']);

@@ -8,64 +8,41 @@ use Illuminate\Http\Request;
 class PersonaController extends Controller
 {
 
-    public function Altas()
+    public function Altas(Request $request)
     {
-        //
+        $persona = new Persona();
+        $persona -> nombre = $request -> persona('nombre');
+        $persona -> apellido = $request -> persona('apellido');
+        $persona -> telefono = $request -> persona('telefono');
+        $persona -> save();
+
+        return $persona;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function Bajas($id)
     {
-        //
+        $persona = Persona::findOrFail($id);
+        $persona -> delete();
+        return [ 'mensaje' => 'Persona dada de baja.' ];
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Persona  $persona
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Persona $persona)
+    public function Modificacion(Request $request, $id)
     {
-        //
+        $persona = Persona::findOrFail($id);
+        $persona -> nombre = $request -> persona('nombre');
+        $persona -> apellido = $request -> persona('apellido');
+        $persona -> telefono = $request -> persona('telefono');
+        $persona -> save();
+        return $persona;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Persona  $persona
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Persona $persona)
+    public function Listar(Request $request)
     {
-        //
+        return Persona::all();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Persona  $persona
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Persona $persona)
+    public function Busqueda(Request $request, $id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Persona  $persona
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Persona $persona)
-    {
-        //
+        return Persona::findOrFail($id);
     }
 }
