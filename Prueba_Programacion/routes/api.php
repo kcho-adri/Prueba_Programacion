@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PersonaController;
 
 Route::post('/persona', [PersonaController::class, 'Altas']);
 Route::delete('/persona/{d}', [PersonaController::class, 'Bajas']);
